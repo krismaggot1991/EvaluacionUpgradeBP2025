@@ -6,8 +6,9 @@ import { ReportsPage } from './features/reports/reports.page';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'clientes', pathMatch: 'full' },
-    { path: 'clientes', component: ClientsPage, title: 'Clientes' },
-    { path: 'cuentas', component: AccountsPage, title: 'Cuentas' },
-    { path: 'movimientos', component: MovementsPage, title: 'Movimientos' },
-    { path: 'reportes', component: ReportsPage, title: 'Reportes' },
+    { path: 'clientes', loadComponent: () => import('./features/clients/clients.page').then(m => m.ClientsPage) },
+    { path: 'cuentas', loadComponent: () => import('./features/accounts/accounts.page').then(m => m.AccountsPage) },
+    { path: 'movimientos', loadComponent: () => import('./features/movements/movements.page').then(m => m.MovementsPage) },
+    { path: 'reportes', loadComponent: () => import('./features/reports/reports.page').then(m => m.ReportsPage) },
+    { path: '**', redirectTo: 'clientes' }
 ];
