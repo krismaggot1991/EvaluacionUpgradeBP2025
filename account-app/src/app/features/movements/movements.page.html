@@ -1,0 +1,116 @@
+<section class="panel">
+  <header class="panel__header">
+    <h1>Movimientos</h1>
+    <input
+      [formControl]="q"
+      class="input"
+      placeholder="Búsqueda por cuenta, tipo, monto o fecha..."
+    />
+  </header>
+
+  <div class="grid">
+    <!-- Formulario -->
+    <form [formGroup]="form" (ngSubmit)="save()" class="card">
+      <h2>{{ form.value.id ? 'Editar' : 'Nuevo' }} movimiento</h2>
+
+      <div class="row">
+        <label>
+          Tipo de movimiento
+          <select formControlName="movementType">
+            <option value="CREDIT">CREDITO (+)</option>
+            <option value="DEBIT">DEBITO (-)</option>
+          </select>
+        </label>
+
+        <label>
+          Monto
+          <input type="number" formControlName="value" min="0.01" step="0.01" />
+          <span class="hint" *ngIf="form.controls.value.invalid && form.controls.value.touched">
+            Ingrese un valor mayor a 0
+          </span>
+        </label>
+      </div>
+
+      <div class="row">
+        <label>
+          ID de cuenta
+          <input type="number" formControlName="accountId" min="1" />
+          <span
+            class="hint"
+            *ngIf="form.controls.accountId.invalid && form.controls.accountId.touched"
+          >
+            Requerido (ID numérico existente)
+          </span>
+        </label>
+
+        <label>
+          Número de cuenta (solo lectura si viene del backend)
+          <input
+            formControlName="accountNumber"
+            placeholder="Se completa al cargar/editar"
+            [readonly]="true"
+          />
+        </label>
+      </div>
+
+      <div class="row">
+        <label>
+          Fecha (opcional)
+          <input type="datetime-local" formControlName="date" />
+        </label>
+
+        <label>
+          Saldo resultante (solo lectura)
+          <input formControlName="balance" />
+        </label>
+      </div>
+
+      <div class="actions">
+        <button type="submit">Guardar</button>
+        <button type="button" (click)="clear()">Limpiar</button>
+      </div>
+      <p class="error" *ngIf="form.invalid && form.touched">Revisa los campos obligatorios.</p>
+    </form>
+
+    <!-- Tabla -->
+    <div class="card">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Cuenta</th>
+            <th>Tipo</th>
+            <th>Monto</th>
+            <th>Saldo</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let m of filtered()">
+            <td>{{ m.date || '—' }}</td>
+            <td>{{ m.accountNumber || m.accountId }}</td>
+            <td>
+              <span
+                [class.badge-credit]="m.movementType === 'CREDIT'"
+                [class.badge-debit]="m.movementType === 'DEBIT'"
+              >
+                {{ m.movementType === 'CREDIT' ? 'Crédito' : 'Débito' }}
+              </span>
+            </td>
+            <td [class.positive]="(m.value ?? 0) > 0" [class.negative]="(m.value ?? 0) < 0">
+              {{ m.value | number : '1.2-2' }}
+            </td>
+            <td>{{ m.balance | number : '1.2-2' }}</td>
+            <td class="row">
+              <button (click)="edit(m)">Editar</button>
+              <button (click)="remove(m.id)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div *ngIf="loading()" class="loader">Cargando…</div>
+      <div *ngIf="!loading() && filtered().length === 0" class="empty">Sin resultados</div>
+    </div>
+  </div>
+</section>

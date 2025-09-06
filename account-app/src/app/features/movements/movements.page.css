@@ -1,0 +1,56 @@
+/* Layout base */
+.panel { padding: 16px; color: #e5e7eb; }
+.panel__header {
+  display: flex; gap: 12px; align-items: center; justify-content: space-between; margin-bottom: 8px;
+}
+.grid { display: grid; grid-template-columns: 420px 1fr; gap: 16px; }
+
+/* Contenedores */
+.card {
+  background: #111827; padding: 16px; border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.3);
+}
+
+/* Inputs */
+.input, input, select {
+  width: 100%; padding: 10px; border: 1px solid #374151; border-radius: 8px;
+  background: #0b1220; color: #f9fafb;
+}
+input:focus, select:focus {
+  outline: none; border-color: #3b82f6; box-shadow: 0 0 0 2px rgba(59,130,246,.35);
+}
+label { display: flex; flex-direction: column; gap: 4px; margin-bottom: 10px; }
+
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.hint { color: #fbbf24; font-size: 12px; }
+.error { color: #f87171; margin-top: 6px; }
+
+/* Tabla */
+.table { width: 100%; border-collapse: collapse; }
+.table th, .table td { text-align: left; padding: 10px; border-bottom: 1px solid #374151; }
+.table thead { background: #1f2937; }
+.table tbody tr:hover { background: #1e293b; }
+
+/* Estado visual para tipo y signo */
+.badge-credit {
+  display: inline-block; padding: 2px 8px; border-radius: 10px;
+  background: #10b981; color: #fff; font-size: 12px;
+}
+.badge-debit {
+  display: inline-block; padding: 2px 8px; border-radius: 10px;
+  background: #ef4444; color: #fff; font-size: 12px;
+}
+.positive { color: #10b981; font-weight: 600; }
+.negative { color: #ef4444; font-weight: 600; }
+
+/* Botones */
+button {
+  padding: 8px 12px; border-radius: 10px; border: 1px solid #374151;
+  background: #0b1220; color: #f9fafb; cursor: pointer;
+}
+button:hover { filter: brightness(1.2); }
+.actions { display: flex; gap: 8px; margin-top: 8px; }
+
+/* Estados secundarios */
+.loader { opacity: .8; padding: 10px; color: #9ca3af; }
+.empty { opacity: .8; padding: 10px; color: #9ca3af; text-align: center; }
