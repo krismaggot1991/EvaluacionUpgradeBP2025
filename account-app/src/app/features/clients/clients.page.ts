@@ -47,7 +47,7 @@ export class ClientsPage {
         this.loading.set(true);
         this.api.list().subscribe({
             next: res => this.items.set(res),
-            error: err => alert(this.msg(err)),
+            error: err => alert(err?.userMessage || err?.message || 'Error inesperado'),
             complete: () => this.loading.set(false)
         });
     }
