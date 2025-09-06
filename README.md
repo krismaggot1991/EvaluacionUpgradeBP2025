@@ -148,7 +148,7 @@ Puedes ver el diagrama de componentes de la arquitectura en IcePanel <a href="ht
 
 ## Probar los Servicios con Postman
 
-En la ruta principal del proyecto, existe un archivo llamado `ChristianMuyonEvaluacionBP2024.postman_collection.json` que contiene una colección de
+En la ruta principal del proyecto, existe un archivo llamado `ChristianMuyonEvaluacionBP2025.postman_collection.json` que contiene una colección de
 pruebas para todos los métodos de los servicios. Puedes importar este archivo a Postman para probar los endpoints de manera fácil.
 
 ## Documentación del API

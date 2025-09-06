@@ -8,7 +8,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/krismaggot1991/ChristianMuyonEvaluacionBP2024
+          uri: https://github.com/krismaggot1991/EvaluacionUpgradeBP2025
           search-paths:
             - configuration
           clone-on-start: true
