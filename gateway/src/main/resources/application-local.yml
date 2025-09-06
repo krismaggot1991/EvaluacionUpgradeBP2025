@@ -1,0 +1,6 @@
+spring:
+  cloud:
+    config:
+      profile: local
+  config:
+    import: optional:configserver:http://localhost:8888
