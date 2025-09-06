@@ -1,0 +1,62 @@
+<section class="panel">
+  <header class="panel__header">
+    <h1>Clientes</h1>
+    <input [formControl]="q" placeholder="Búsqueda rápida..." class="input" />
+  </header>
+
+  <div class="grid">
+    <form [formGroup]="form" (ngSubmit)="save()" class="card">
+      <h2>{{ form.value.id ? 'Editar' : 'Nuevo' }} cliente</h2>
+      <label>Nombre <input formControlName="name" /></label>
+      <label
+        >Género
+        <select formControlName="gender">
+          <option value="M">M</option>
+          <option value="F">F</option>
+          <option value="O">Otro</option>
+        </select>
+      </label>
+      <label>Edad <input type="number" formControlName="age" /></label>
+      <label>Identificación <input formControlName="identification" /></label>
+      <label>Dirección <input formControlName="address" /></label>
+      <label>Teléfono <input formControlName="phone" /></label>
+      <label class="row"><input type="checkbox" formControlName="status" /> Activo</label>
+      <div class="actions">
+        <button type="submit">Guardar</button>
+        <button type="button" (click)="clear()">Limpiar</button>
+      </div>
+      <p class="error" *ngIf="form.invalid && form.touched">Revisa los campos obligatorios.</p>
+    </form>
+
+    <div class="card">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>CI</th>
+            <th>Teléfono</th>
+            <th>Estado</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let c of filtered()">
+            <td>{{ c.name }}</td>
+            <td>{{ c.identification }}</td>
+            <td>{{ c.phone }}</td>
+            <td>
+              <span [class.badge-ok]="c.status" [class.badge-no]="!c.status">{{
+                c.status ? 'Activo' : 'Inactivo'
+              }}</span>
+            </td>
+            <td class="row">
+              <button (click)="edit(c)">Editar</button>
+              <button (click)="remove(c.id)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div *ngIf="loading()" class="loader">Cargando…</div>
+    </div>
+  </div>
+</section>
