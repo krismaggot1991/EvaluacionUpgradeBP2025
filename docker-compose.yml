@@ -1,0 +1,129 @@
+services:
+  config-server:
+    build:
+      context: ./config-server
+      dockerfile: Dockerfile
+    container_name: config-server
+    ports:
+      - "8888:8888"
+    networks:
+      - spring
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider localhost:8888/actuator/health || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+  discovery:
+    build:
+      context: ./discovery
+      dockerfile: Dockerfile
+    container_name: discovery
+    ports:
+      - "8761:8761"
+    networks:
+      - spring
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider localhost:8761/actuator/health || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: client
+    ports:
+      - "8090:8090"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://clients-db:5432/clients
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=admin
+    networks:
+      - spring
+      - postgres
+    depends_on:
+      config-server:
+        condition: service_healthy
+      discovery:
+        condition: service_healthy
+      clients-db:
+        condition: service_healthy
+  accounts:
+    build:
+      context: ./account
+      dockerfile: Dockerfile
+    container_name: account
+    ports:
+      - "8070:8070"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://accounts-db:5432/accounts
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=admin
+    networks:
+      - spring
+      - postgres
+    depends_on:
+      config-server:
+        condition: service_healthy
+      discovery:
+        condition: service_healthy
+      accounts-db:
+        condition: service_healthy
+  gateway:
+    build:
+      context: ./gateway
+      dockerfile: Dockerfile
+    container_name: gateway
+    ports:
+      - "8222:8222"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - spring
+    depends_on:
+      config-server:
+        condition: service_healthy
+      discovery:
+        condition: service_healthy
+  clients-db:
+    image: postgres:16
+    container_name: clients-db
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_DB=clients
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+    networks:
+      - postgres
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+  accounts-db:
+    image: postgres:16
+    container_name: accounts-db
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=accounts
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+    networks:
+      - postgres
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+networks:
+  spring:
+    driver: bridge
+  postgres:
+    driver: bridge
