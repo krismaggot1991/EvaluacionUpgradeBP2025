@@ -27,6 +27,7 @@ export class ClientsPage {
         identification: ['', Validators.required],
         address: ['', Validators.required],
         phone: ['', Validators.required],
+        password: ['', []], // <-- se requerirá SOLO si es nuevo
         status: [true, Validators.required],
     });
 
@@ -40,7 +41,16 @@ export class ClientsPage {
 
     constructor() {
         this.load();
-        this.q.valueChanges.pipe(debounceTime(250)).subscribe(); // solo para refrescar computed
+        this.form.controls.id.valueChanges.subscribe(id => {
+            const ctrl = this.form.controls.password;
+            if (!id) {
+                ctrl.setValidators([Validators.required, Validators.minLength(6)]);
+            } else {
+                ctrl.clearValidators();
+                ctrl.setValue(''); // no forzamos cambio en edición
+            }
+            ctrl.updateValueAndValidity({ emitEvent: false });
+        });
     }
 
     load() {
@@ -52,12 +62,27 @@ export class ClientsPage {
         });
     }
 
-    edit(row: Client) { this.form.patchValue(row); }
-    clear() { this.form.reset({ status: true, gender: 'O', age: 18 }); }
+    edit(row: Client) {
+        // nunca traemos password a la UI
+        const { password, ...rest } = row;
+        this.form.patchValue(rest);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    clear() {
+        this.form.reset({ status: true, gender: 'MASCULINO', age: 18, password: '' });
+    }
 
     save() {
-        if (this.form.invalid) return this.form.markAllAsTouched();
+        if (this.form.invalid) {
+            this.form.markAllAsTouched();
+            return;
+        }
         const dto = this.form.getRawValue() as Client;
+
+        // Si es edición y password está vacío, no lo enviamos
+        if (dto.id && !dto.password) delete (dto as any).password;
+
         const req$ = dto.id ? this.api.update(dto.id!, dto) : this.api.create(dto);
         req$.subscribe({
             next: _ => { this.clear(); this.load(); },

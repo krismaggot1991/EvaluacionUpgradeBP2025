@@ -1,11 +1,11 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ToastComponent } from './shared/toast/toast.component';
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, RouterOutlet, ToastComponent],
+  imports: [CommonModule, RouterOutlet, ToastComponent, RouterLink, RouterLinkActive],
   template: `
     <header class="topbar">
       <h1>Bank App</h1>

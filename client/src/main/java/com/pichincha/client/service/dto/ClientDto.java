@@ -1,7 +1,6 @@
 package com.pichincha.client.service.dto;
 
 import com.pichincha.client.domain.enums.Gender;
-import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -34,9 +33,9 @@ public class ClientDto {
   @Size(max = 10, message = "Phone cannot exceed 10 digits")
   String phone;
 
-  @NotNull
-  @Digits(integer = 4, fraction = 0, message = "Password must be 4 digits")
-  Integer password;
+  @NotEmpty
+  @Size(min = 6, max = 20, message = "Password must be between 6 and 20 characters")
+  String password;
 
   @NotNull
   Boolean status;

@@ -7,20 +7,37 @@
   <div class="grid">
     <form [formGroup]="form" (ngSubmit)="save()" class="card">
       <h2>{{ form.value.id ? 'Editar' : 'Nuevo' }} cliente</h2>
+
       <label>Nombre <input formControlName="name" /></label>
       <label
         >Género
         <select formControlName="gender">
-          <option value="M">M</option>
-          <option value="F">F</option>
-          <option value="O">Otro</option>
+          <option value="MASCULINO">MASCULINO</option>
+          <option value="FEMENINNO">FEMENINNO</option>
+          <option value="OTRO">OTRO</option>
         </select>
       </label>
       <label>Edad <input type="number" formControlName="age" /></label>
       <label>Identificación <input formControlName="identification" /></label>
       <label>Dirección <input formControlName="address" /></label>
       <label>Teléfono <input formControlName="phone" /></label>
+
+      <!-- Contraseña solo al crear -->
+      <ng-container *ngIf="!form.value.id">
+        <label
+          >Contraseña
+          <input type="password" formControlName="password" placeholder="Mínimo 6 caracteres" />
+          <span
+            class="error"
+            *ngIf="form.controls.password.invalid && form.controls.password.touched"
+          >
+            La contraseña es obligatoria (mínimo 6 caracteres, máximo 20 caracteres)
+          </span>
+        </label>
+      </ng-container>
+
       <label class="row"><input type="checkbox" formControlName="status" /> Activo</label>
+
       <div class="actions">
         <button type="submit">Guardar</button>
         <button type="button" (click)="clear()">Limpiar</button>
