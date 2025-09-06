@@ -1,0 +1,20 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+server:
+  port: 8222
+
+spring:
+  cloud:
+    gateway:
+      routes:
+          - id: client
+            uri: lb://client
+            predicates:
+              - Path=/api/client/**
+          - id: account
+            uri: lb://account
+            predicates:
+              - Path=/api/**

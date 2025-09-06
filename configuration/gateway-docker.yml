@@ -1,0 +1,20 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://discovery:8761/eureka
+
+server:
+  port: 8222
+
+spring:
+  cloud:
+    gateway:
+      routes:
+          - id: client
+            uri: http://client:8090
+            predicates:
+              - Path=/api/client/**
+          - id: account
+            uri: http://account:8070
+            predicates:
+              - Path=/api/**
