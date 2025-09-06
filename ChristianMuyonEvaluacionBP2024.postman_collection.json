@@ -1,0 +1,1180 @@
+{
+	"info": {
+		"_postman_id": "012b8c4d-6d93-4626-9797-f9b71f07f094",
+		"name": "ChristianMuyonEvaluacionBP2024",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15005507"
+	},
+	"item": [
+		{
+			"name": "ClientAccountModules",
+			"item": [
+				{
+					"name": "Clients",
+					"item": [
+						{
+							"name": "Create Client",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Christian Muyon\",\r\n    \"gender\": \"MALE\",\r\n    \"age\": 33,\r\n    \"identification\": \"1803750312\",\r\n    \"address\": \"10 de agosto y Naciones Unidas\",\r\n    \"phone\": \"0999733321\",\r\n    \"password\": 1234,\r\n    \"status\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{gateway-url}}/api/client",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"api",
+										"client"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "sucess",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"Christian Muyon\",\r\n    \"gender\": \"MALE\",\r\n    \"age\": 33,\r\n    \"identification\": \"1803750312\",\r\n    \"address\": \"10 de agosto y Naciones Unidas\",\r\n    \"phone\": \"0999733321\",\r\n    \"password\": 1234,\r\n    \"status\": true\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{gateway-url}}/api/client",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"api",
+												"client"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Content-Length",
+											"value": "0"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 08 Sep 2024 23:58:05 GMT"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "Update Client",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Christian Alfredo Muyon Rivera\",\r\n    \"gender\": \"FEMALE\",\r\n    \"age\": 35,\r\n    \"identification\": \"1803750312\",\r\n    \"address\": \"Calle america\",\r\n    \"phone\": \"0999733321\",\r\n    \"password\": 1234,\r\n    \"status\": false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{gateway-url}}/api/client/1",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"api",
+										"client",
+										"1"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "sucess",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"Christian Alfredo Muyon Rivera\",\r\n    \"gender\": \"FEMALE\",\r\n    \"age\": 35,\r\n    \"identification\": \"1803750312\",\r\n    \"address\": \"Calle america\",\r\n    \"phone\": \"0999733321\",\r\n    \"password\": 1234,\r\n    \"status\": false\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{gateway-url}}/api/client/1",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"api",
+												"client",
+												"1"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Content-Length",
+											"value": "0"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 08 Sep 2024 23:57:59 GMT"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "Delete client",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{gateway-url}}/api/client/1",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"api",
+										"client",
+										"1"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "sucess",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/api/client/2",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"api",
+												"client",
+												"2"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Content-Length",
+											"value": "0"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 08 Sep 2024 23:58:28 GMT"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "Find all clients",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gateway-url}}/api/client",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"api",
+										"client"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "sucess",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/api/client",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"api",
+												"client"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 08 Sep 2024 23:58:45 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": 4,\n        \"name\": \"Christian Muyon\",\n        \"gender\": \"MALE\",\n        \"age\": 33,\n        \"identification\": \"1803750312\",\n        \"address\": \"10 de agosto y Naciones Unidas\",\n        \"phone\": \"0999733321\",\n        \"password\": 1234,\n        \"status\": true\n    },\n    {\n        \"id\": 5,\n        \"name\": \"Mariana Rivera\",\n        \"gender\": \"FEMALE\",\n        \"age\": 42,\n        \"identification\": \"1802133684\",\n        \"address\": \"Ambato\",\n        \"phone\": \"0998751264\",\n        \"password\": 1233,\n        \"status\": true\n    },\n    {\n        \"id\": 6,\n        \"name\": \"Alfredo Muyon\",\n        \"gender\": \"MALE\",\n        \"age\": 52,\n        \"identification\": \"1801764729\",\n        \"address\": \"Latacunga\",\n        \"phone\": \"0991245789\",\n        \"password\": 1231,\n        \"status\": true\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "Find client by identification",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gateway-url}}/api/client/1803750312",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"api",
+										"client",
+										"1803750312"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "sucess",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/api/client/1803750312",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"api",
+												"client",
+												"1803750312"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 09 Sep 2024 00:01:09 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 4,\n    \"name\": \"Christian Muyon\",\n    \"gender\": \"MALE\",\n    \"age\": 33,\n    \"identification\": \"1803750312\",\n    \"address\": \"10 de agosto y Naciones Unidas\",\n    \"phone\": \"0999733321\",\n    \"password\": 1234,\n    \"status\": true\n}"
+								}
+							]
+						},
+						{
+							"name": "Add client list",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n    {\r\n        \"name\": \"Christian Muyon\",\r\n        \"gender\": \"MALE\",\r\n        \"age\": 33,\r\n        \"identification\": \"1803750312\",\r\n        \"address\": \"10 de agosto y Naciones Unidas\",\r\n        \"phone\": \"0999733321\",\r\n        \"password\": 1234,\r\n        \"status\": true\r\n    },\r\n    {\r\n    \"name\": \"Mariana Rivera\",\r\n    \"gender\": \"FEMALE\",\r\n    \"age\": 42,\r\n    \"identification\": \"1802133684\",\r\n    \"address\": \"Ambato\",\r\n    \"phone\": \"0998751264\",\r\n    \"password\": 1233,\r\n    \"status\": true\r\n    },\r\n    {\r\n    \"name\": \"Alfredo Muyon\",\r\n    \"gender\": \"MALE\",\r\n    \"age\": 52,\r\n    \"identification\": \"1801764729\",\r\n    \"address\": \"Latacunga\",\r\n    \"phone\": \"0991245789\",\r\n    \"password\": 1231,\r\n    \"status\": true\r\n    }\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{gateway-url}}/api/client/save-list",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"api",
+										"client",
+										"save-list"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "sucess",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "[\r\n    {\r\n        \"name\": \"Christian Muyon\",\r\n        \"gender\": \"MALE\",\r\n        \"age\": 33,\r\n        \"identification\": \"1803750312\",\r\n        \"address\": \"10 de agosto y Naciones Unidas\",\r\n        \"phone\": \"0999733321\",\r\n        \"password\": 1234,\r\n        \"status\": true\r\n    },\r\n    {\r\n        \"name\": \"Mariana Rivera\",\r\n        \"gender\": \"FEMALE\",\r\n        \"age\": 42,\r\n        \"identification\": \"1802133684\",\r\n        \"address\": \"Ambato\",\r\n        \"phone\": \"0998751264\",\r\n        \"password\": 1233,\r\n        \"status\": true\r\n    },\r\n    {\r\n        \"name\": \"Alfredo Muyon\",\r\n        \"gender\": \"MALE\",\r\n        \"age\": 52,\r\n        \"identification\": \"1801764729\",\r\n        \"address\": \"Latacunga\",\r\n        \"phone\": \"0991245789\",\r\n        \"password\": 1231,\r\n        \"status\": true\r\n    }\r\n]",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{gateway-url}}/api/client/save-list",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"api",
+												"client",
+												"save-list"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Content-Length",
+											"value": "0"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 08 Sep 2024 23:58:41 GMT"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Accounts",
+					"item": [
+						{
+							"name": "Create account",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"number\": \"123456\",\r\n    \"accountType\": \"SAVINGS\",\r\n    \"initialBalance\": 3000,\r\n    \"status\": true,\r\n    \"clientIdentification\": \"1803750312\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{gateway-url}}/api/account",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"api",
+										"account"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "sucess",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"number\": \"123456\",\r\n    \"accountType\": \"SAVINGS\",\r\n    \"initialBalance\": 3000,\r\n    \"status\": true,\r\n    \"clientIdentification\": \"1803750312\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{gateway-url}}/api/account",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"api",
+												"account"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Content-Length",
+											"value": "0"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 08 Sep 2024 23:58:53 GMT"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "Update account",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"number\": \"123456\",\r\n    \"accountType\": \"CHECKING\",\r\n    \"initialBalance\": 4000,\r\n    \"status\": true,\r\n    \"clientIdentification\": \"1803750312\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{gateway-url}}/api/account/1",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"api",
+										"account",
+										"1"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "sucess",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"number\": \"123456\",\r\n    \"accountType\": \"CHECKING\",\r\n    \"initialBalance\": 4000,\r\n    \"status\": true,\r\n    \"clientIdentification\": \"1803750312\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{gateway-url}}/api/account/1",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"api",
+												"account",
+												"1"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Content-Length",
+											"value": "0"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 09 Sep 2024 00:00:10 GMT"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "Find all accounts",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gateway-url}}/api/account",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"api",
+										"account"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "sucess",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/api/account",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"api",
+												"account"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 09 Sep 2024 00:00:01 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": 3,\n        \"number\": \"225487\",\n        \"accountType\": \"CHECKING\",\n        \"initialBalance\": 100,\n        \"status\": true,\n        \"clientId\": 5,\n        \"clientIdentification\": null,\n        \"movements\": []\n    },\n    {\n        \"id\": 4,\n        \"number\": \"495878\",\n        \"accountType\": \"SAVINGS\",\n        \"initialBalance\": 0,\n        \"status\": true,\n        \"clientId\": 6,\n        \"clientIdentification\": null,\n        \"movements\": []\n    },\n    {\n        \"id\": 2,\n        \"number\": \"123456\",\n        \"accountType\": \"SAVINGS\",\n        \"initialBalance\": 2700,\n        \"status\": true,\n        \"clientId\": 4,\n        \"clientIdentification\": null,\n        \"movements\": []\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "Delete account",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{gateway-url}}/api/account/1",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"api",
+										"account",
+										"1"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "sucess",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/api/account/1",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"api",
+												"account",
+												"1"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Content-Length",
+											"value": "0"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 08 Sep 2024 23:59:03 GMT"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "Add account List",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n    {\r\n        \"number\": \"123456\",\r\n        \"accountType\": \"SAVINGS\",\r\n        \"initialBalance\": 3000,\r\n        \"status\": true,\r\n        \"clientIdentification\": \"1803750312\"\r\n    },\r\n    {\r\n        \"number\": \"225487\",\r\n        \"accountType\": \"CHECKING\",\r\n        \"initialBalance\": 100,\r\n        \"status\": true,\r\n        \"clientIdentification\": \"1802133684\"\r\n    },\r\n    {\r\n        \"number\": \"495878\",\r\n        \"accountType\": \"SAVINGS\",\r\n        \"initialBalance\": 0,\r\n        \"status\": true,\r\n        \"clientIdentification\": \"1801764729\"\r\n    }\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{gateway-url}}/api/account/save-list",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"api",
+										"account",
+										"save-list"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "sucess",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "[\r\n    {\r\n        \"number\": \"123456\",\r\n        \"accountType\": \"SAVINGS\",\r\n        \"initialBalance\": 3000,\r\n        \"status\": true,\r\n        \"clientIdentification\": \"1803750312\"\r\n    },\r\n    {\r\n        \"number\": \"225487\",\r\n        \"accountType\": \"CHECKING\",\r\n        \"initialBalance\": 100,\r\n        \"status\": true,\r\n        \"clientIdentification\": \"1802133684\"\r\n    },\r\n    {\r\n        \"number\": \"495878\",\r\n        \"accountType\": \"SAVINGS\",\r\n        \"initialBalance\": 0,\r\n        \"status\": true,\r\n        \"clientIdentification\": \"1801764729\"\r\n    }\r\n]",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{gateway-url}}/api/account/save-list",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"api",
+												"account",
+												"save-list"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Content-Length",
+											"value": "0"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 08 Sep 2024 23:59:10 GMT"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Movements",
+					"item": [
+						{
+							"name": "Create movement",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"date\": \"2024-09-08\",\r\n    \"movementType\": \"WITHDRAWAL\",\r\n    \"value\": -200,\r\n    \"accountNumber\": \"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{gateway-url}}/api/movement",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"api",
+										"movement"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "sucess",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"date\": \"2024-09-08\",\r\n    \"movementType\": \"WITHDRAWAL\",\r\n    \"value\": -300,\r\n    \"accountNumber\": \"123456\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{gateway-url}}/api/movement",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"api",
+												"movement"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Content-Length",
+											"value": "0"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 08 Sep 2024 23:59:17 GMT"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "Update movement",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"date\": \"2024-01-13\",\r\n    \"movementType\": \"DEPOSIT\",\r\n    \"value\": 4000,\r\n    \"accountNumber\": \"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{gateway-url}}/api/movement/1",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"api",
+										"movement",
+										"1"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "sucess",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"date\": \"2024-09-08\",\r\n    \"movementType\": \"DEPOSIT\",\r\n    \"value\": 100,\r\n    \"accountNumber\": \"123456\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{gateway-url}}/api/movement/1",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"api",
+												"movement",
+												"1"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Content-Length",
+											"value": "0"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 08 Sep 2024 23:59:29 GMT"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "Find all movements",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{gateway-url}}/api/movement",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"api",
+										"movement"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "sucess",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/api/movement",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"api",
+												"movement"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 08 Sep 2024 23:59:32 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": 1,\n        \"date\": \"2024-09-08\",\n        \"movementType\": \"DEPOSIT\",\n        \"value\": 100,\n        \"balance\": 3000,\n        \"accountId\": 2,\n        \"accountNumber\": \"123456\"\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "Delete movements",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{gateway-url}}/api/movement/3",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"api",
+										"movement",
+										"3"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "sucess",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{gateway-url}}/api/movement/1",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"api",
+												"movement",
+												"1"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Content-Length",
+											"value": "0"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 08 Sep 2024 23:59:36 GMT"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "Add movements List",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n    {\r\n        \"date\": \"2024-09-08\",\r\n        \"movementType\": \"WITHDRAWAL\",\r\n        \"value\": -300,\r\n        \"accountNumber\": \"123456\"\r\n    },\r\n    {\r\n        \"date\": \"2024-09-08\",\r\n        \"movementType\": \"DEPOSIT\",\r\n        \"value\": 600,\r\n        \"accountNumber\": \"123456\"\r\n    },\r\n    {\r\n        \"date\": \"2024-09-08\",\r\n        \"movementType\": \"DEPOSIT\",\r\n        \"value\": 100,\r\n        \"accountNumber\": \"123456\"\r\n    },\r\n    {\r\n        \"date\": \"2024-09-08\",\r\n        \"movementType\": \"WITHDRAWAL\",\r\n        \"value\": -500,\r\n        \"accountNumber\": \"123456\"\r\n    }\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{gateway-url}}/api/movement/save-list",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"api",
+										"movement",
+										"save-list"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "sucess",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "[\r\n    {\r\n        \"date\": \"2024-09-08\",\r\n        \"movementType\": \"WITHDRAWAL\",\r\n        \"value\": -300,\r\n        \"accountNumber\": \"123456\"\r\n    },\r\n    {\r\n        \"date\": \"2024-09-08\",\r\n        \"movementType\": \"DEPOSIT\",\r\n        \"value\": 600,\r\n        \"accountNumber\": \"123456\"\r\n    },\r\n    {\r\n        \"date\": \"2024-09-08\",\r\n        \"movementType\": \"DEPOSIT\",\r\n        \"value\": 100,\r\n        \"accountNumber\": \"123456\"\r\n    },\r\n    {\r\n        \"date\": \"2024-09-08\",\r\n        \"movementType\": \"WITHDRAWAL\",\r\n        \"value\": -500,\r\n        \"accountNumber\": \"123456\"\r\n    }\r\n]",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{gateway-url}}/api/movement/save-list",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"api",
+												"movement",
+												"save-list"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Content-Length",
+											"value": "0"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 09 Sep 2024 00:00:21 GMT"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Reports",
+					"item": [
+						{
+							"name": "Status Report",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{gateway-url}}/api/account/report?initialDate=2024-09-01&endDate=2024-12-10&clientIdentification=1803750312",
+									"host": [
+										"{{gateway-url}}"
+									],
+									"path": [
+										"api",
+										"account",
+										"report"
+									],
+									"query": [
+										{
+											"key": "initialDate",
+											"value": "2024-09-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2024-12-10"
+										},
+										{
+											"key": "clientIdentification",
+											"value": "1803750312"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "sucess",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{gateway-url}}/api/account/report?initialDate=2024-09-01&endDate=2024-12-10&clientIdentification=1803750312",
+											"host": [
+												"{{gateway-url}}"
+											],
+											"path": [
+												"api",
+												"account",
+												"report"
+											],
+											"query": [
+												{
+													"key": "initialDate",
+													"value": "2024-09-01"
+												},
+												{
+													"key": "endDate",
+													"value": "2024-12-10"
+												},
+												{
+													"key": "clientIdentification",
+													"value": "1803750312"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "transfer-encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 09 Sep 2024 00:00:25 GMT"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"name\": \"Christian Muyon\",\n    \"accounts\": [\n        {\n            \"id\": 2,\n            \"number\": \"123456\",\n            \"accountType\": \"CHECKING\",\n            \"initialBalance\": 3900,\n            \"status\": true,\n            \"clientId\": 4,\n            \"clientIdentification\": null,\n            \"movements\": [\n                {\n                    \"id\": 2,\n                    \"date\": \"2024-09-08\",\n                    \"movementType\": \"WITHDRAWAL\",\n                    \"value\": -300,\n                    \"balance\": 4000,\n                    \"accountId\": null,\n                    \"accountNumber\": null\n                },\n                {\n                    \"id\": 3,\n                    \"date\": \"2024-09-08\",\n                    \"movementType\": \"DEPOSIT\",\n                    \"value\": 600,\n                    \"balance\": 3700,\n                    \"accountId\": null,\n                    \"accountNumber\": null\n                },\n                {\n                    \"id\": 4,\n                    \"date\": \"2024-09-08\",\n                    \"movementType\": \"DEPOSIT\",\n                    \"value\": 100,\n                    \"balance\": 4300,\n                    \"accountId\": null,\n                    \"accountNumber\": null\n                },\n                {\n                    \"id\": 5,\n                    \"date\": \"2024-09-08\",\n                    \"movementType\": \"WITHDRAWAL\",\n                    \"value\": -500,\n                    \"balance\": 4400,\n                    \"accountId\": null,\n                    \"accountNumber\": null\n                }\n            ]\n        }\n    ]\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "gateway-url",
+			"value": "http://localhost:8222",
+			"type": "string"
+		}
+	]
+}

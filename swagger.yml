@@ -1,0 +1,355 @@
+openapi: 3.0.0
+info:
+  title: ChristianMuyonEvaluacionBP2024 API
+  description: "<sup>(ES)</sup>Aplicación de un sistema de gestión de cuentas y movimientos bancarios que consta de varios módulos desarrollados en Spring Boot. La solución se compone de microservicios independientes que interactúan entre sí a través de llamadas HTTP REST utilizando FeignClient para la comunicación síncrona..\n"
+  contact:
+    name: Christian Muyón
+    email: cmuyonri@pichincha.com
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8222
+    description: Local server
+
+tags:
+  - name: Clients
+    description: Endpoints related to client management
+  - name: Accounts
+    description: Endpoints related to account management
+  - name: Movements
+    description: Endpoints related to movement management
+  - name: Reports
+    description: Endpoints related to generating reports
+
+paths:
+  /api/client:
+    post:
+      tags:
+        - Clients
+      summary: Create Client
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                gender:
+                  type: string
+                age:
+                  type: integer
+                identification:
+                  type: string
+                address:
+                  type: string
+                phone:
+                  type: string
+                password:
+                  type: integer
+                status:
+                  type: boolean
+      responses:
+        '201':
+          description: Created
+
+    get:
+      tags:
+        - Clients
+      summary: Find all clients
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Client'
+
+  /api/client/{id}:
+    put:
+      tags:
+        - Clients
+      summary: Update Client
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Client'
+      responses:
+        '200':
+          description: OK
+
+    delete:
+      tags:
+        - Clients
+      summary: Delete client
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+
+  /api/account:
+    post:
+      tags:
+        - Accounts
+      summary: Create Account
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                number:
+                  type: string
+                accountType:
+                  type: string
+                initialBalance:
+                  type: number
+                status:
+                  type: boolean
+                clientIdentification:
+                  type: string
+      responses:
+        '201':
+          description: Created
+
+    get:
+      tags:
+        - Accounts
+      summary: Find all accounts
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Account'
+
+  /api/account/{id}:
+    put:
+      tags:
+        - Accounts
+      summary: Update Account
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Account'
+      responses:
+        '200':
+          description: OK
+
+    delete:
+      tags:
+        - Accounts
+      summary: Delete Account
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+
+  /api/movement:
+    post:
+      tags:
+        - Movements
+      summary: Create Movement
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+                  format: date
+                movementType:
+                  type: string
+                value:
+                  type: number
+                accountNumber:
+                  type: string
+      responses:
+        '201':
+          description: Created
+
+    get:
+      tags:
+        - Movements
+      summary: Find all movements
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Movement'
+
+  /api/movement/{id}:
+    put:
+      tags:
+        - Movements
+      summary: Update Movement
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Movement'
+      responses:
+        '200':
+          description: OK
+
+    delete:
+      tags:
+        - Movements
+      summary: Delete Movement
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+
+  /api/account/report:
+    get:
+      tags:
+        - Reports
+      summary: Generate Status Report
+      parameters:
+        - in: query
+          name: initialDate
+          required: true
+          schema:
+            type: string
+            format: date
+        - in: query
+          name: endDate
+          required: true
+          schema:
+            type: string
+            format: date
+        - in: query
+          name: clientIdentification
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatusReport'
+
+components:
+  schemas:
+    Client:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        gender:
+          type: string
+        age:
+          type: integer
+        identification:
+          type: string
+        address:
+          type: string
+        phone:
+          type: string
+        password:
+          type: integer
+        status:
+          type: boolean
+
+    Account:
+      type: object
+      properties:
+        id:
+          type: integer
+        number:
+          type: string
+        accountType:
+          type: string
+        initialBalance:
+          type: number
+        status:
+          type: boolean
+        clientId:
+          type: integer
+        clientIdentification:
+          type: string
+
+    Movement:
+      type: object
+      properties:
+        id:
+          type: integer
+        date:
+          type: string
+          format: date
+        movementType:
+          type: string
+        value:
+          type: number
+        balance:
+          type: number
+        accountId:
+          type: integer
+        accountNumber:
+          type: string
+
+    StatusReport:
+      type: object
+      properties:
+        name:
+          type: string
+        accounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Account'
