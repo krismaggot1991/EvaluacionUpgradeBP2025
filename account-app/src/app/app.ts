@@ -1,10 +1,11 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { ToastComponent } from './shared/toast/toast.component';
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, RouterOutlet],
+  imports: [CommonModule, RouterOutlet, ToastComponent],
   template: `
     <header class="topbar">
       <h1>Bank App</h1>
@@ -18,6 +19,7 @@ import { CommonModule } from '@angular/common';
     <main class="container">
       <router-outlet></router-outlet>
     </main>
+    <app-toast></app-toast>
   `,
   styles: [`
     :host { color: #e5e7eb; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; }
