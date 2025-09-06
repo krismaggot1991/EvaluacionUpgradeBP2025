@@ -1,0 +1,20 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/krismaggot1991/ChristianMuyonEvaluacionBP2024
+          search-paths:
+            - configuration
+          clone-on-start: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
