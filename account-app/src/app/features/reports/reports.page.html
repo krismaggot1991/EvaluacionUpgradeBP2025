@@ -1,0 +1,64 @@
+<section class="panel">
+  <header class="panel__header">
+    <h1>Reporte de Estado de Cuenta</h1>
+  </header>
+
+  <!-- Formulario de filtros -->
+  <form [formGroup]="form" (ngSubmit)="fetch()" class="card">
+    <div class="row">
+      <label>
+        Fecha inicial
+        <input type="date" formControlName="initialDate" />
+      </label>
+      <label>
+        Fecha final
+        <input type="date" formControlName="endDate" />
+      </label>
+      <label>
+        Identificación cliente
+        <input type="text" formControlName="clientIdentification" placeholder="CI o ID" />
+      </label>
+    </div>
+    <div class="actions">
+      <button type="submit">Generar reporte</button>
+    </div>
+    <p class="error" *ngIf="form.invalid && form.touched">Todos los campos son obligatorios.</p>
+  </form>
+
+  <!-- Resultado -->
+  <div *ngIf="data()" class="card">
+    <h2>Cliente: {{ data()?.client }}</h2>
+
+    <div *ngFor="let acc of data()?.accounts" class="report-block">
+      <h3>Cuenta: {{ acc.number }} ({{ acc.type }})</h3>
+      <p>Saldo inicial: {{ acc.initialBalance | currency : 'USD' }}</p>
+      <p>Estado: {{ acc.status ? 'Activa' : 'Inactiva' }}</p>
+      <p>Total créditos: {{ acc.totalCredits | currency : 'USD' }}</p>
+      <p>Total débitos: {{ acc.totalDebits | currency : 'USD' }}</p>
+      <p>Saldo disponible: {{ acc.availableBalance | currency : 'USD' }}</p>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Movimiento</th>
+            <th>Saldo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let m of acc.movements">
+            <td>{{ m.date }}</td>
+            <td>{{ m.movement | number : '1.2-2' }}</td>
+            <td>{{ m.balance | number : '1.2-2' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="actions">
+      <button type="button" (click)="downloadPdf()">Descargar PDF</button>
+    </div>
+  </div>
+
+  <div *ngIf="loading()" class="loader">Cargando…</div>
+</section>

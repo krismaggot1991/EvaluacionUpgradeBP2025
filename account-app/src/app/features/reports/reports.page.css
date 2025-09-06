@@ -1,0 +1,61 @@
+.panel {
+  padding: 16px;
+}
+.card {
+  background: #111827;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+.row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+}
+input {
+  padding: 6px 10px;
+  border: 1px solid #333;
+  border-radius: 8px;
+  background: #0b1220;
+  color: #e5e7eb;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+}
+.table th,
+.table td {
+  border-bottom: 1px solid #333;
+  padding: 6px 8px;
+  text-align: left;
+}
+.actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+}
+button {
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: #0b1220;
+  color: #e5e7eb;
+  border: 1px solid #333;
+  cursor: pointer;
+}
+button:hover {
+  filter: brightness(1.2);
+}
+.error {
+  color: #f87171;
+  margin-top: 8px;
+}
+.loader {
+  margin-top: 16px;
+}
