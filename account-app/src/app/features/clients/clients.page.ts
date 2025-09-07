@@ -27,7 +27,7 @@ export class ClientsPage {
         identification: ['', Validators.required],
         address: ['', Validators.required],
         phone: ['', Validators.required],
-        password: ['', []], // <-- se requerirá SOLO si es nuevo
+        password: ['', [Validators.required]],
         status: [true, Validators.required],
     });
 
@@ -63,10 +63,18 @@ export class ClientsPage {
     }
 
     edit(row: Client) {
-        // nunca traemos password a la UI
-        const { password, ...rest } = row;
-        this.form.patchValue(rest);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        if (!row.identification) return;
+        // Opcional: spinner local mientras trae el detalle
+        this.loading.set(true);
+        this.api.get(row.identification.toString()).subscribe({
+            next: (full) => {
+                // full debe venir con `password` desde el back
+                this.form.reset(full); // parchea todo tal cual
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            },
+            error: (err) => alert(this.msg(err)),
+            complete: () => this.loading.set(false)
+        });
     }
 
     clear() {
@@ -74,15 +82,8 @@ export class ClientsPage {
     }
 
     save() {
-        if (this.form.invalid) {
-            this.form.markAllAsTouched();
-            return;
-        }
+        if (this.form.invalid) { this.form.markAllAsTouched(); return; }
         const dto = this.form.getRawValue() as Client;
-
-        // Si es edición y password está vacío, no lo enviamos
-        if (dto.id && !dto.password) delete (dto as any).password;
-
         const req$ = dto.id ? this.api.update(dto.id!, dto) : this.api.create(dto);
         req$.subscribe({
             next: _ => { this.clear(); this.load(); },

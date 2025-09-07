@@ -7,5 +7,5 @@ export interface Client {
     address: string;
     phone: string;
     status: boolean;
-    password?: string;
+    password: string;
 }

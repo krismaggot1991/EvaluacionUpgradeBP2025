@@ -26,12 +26,12 @@
       <ng-container *ngIf="!form.value.id">
         <label
           >Contraseña
-          <input type="password" formControlName="password" placeholder="Mínimo 6 caracteres" />
+          <input type="password" formControlName="password" placeholder="********" />
           <span
             class="error"
             *ngIf="form.controls.password.invalid && form.controls.password.touched"
           >
-            La contraseña es obligatoria (mínimo 6 caracteres, máximo 20 caracteres)
+            La contraseña es obligatoria
           </span>
         </label>
       </ng-container>
