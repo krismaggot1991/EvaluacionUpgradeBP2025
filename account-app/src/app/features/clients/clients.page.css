@@ -102,8 +102,8 @@ table {
 }
 
 thead {
-  background: var(--bp-yellow);
-  color: var(--bp-navy);
+  background: #0F265C;
+  color: #FFFFFF;
 }
 
 th, td {
@@ -139,9 +139,17 @@ tbody tr:hover {
 }
 
 /* Acciones */
-.actions, td .row {
+.actions {
   display: flex;
   gap: 10px;
+  margin-top: 8px;
+  align-items: center;
+}
+
+/* Más espacio entre botones en celdas de tabla */
+td .row {
+  display: flex;
+  gap: 16px;
   margin-top: 8px;
   align-items: center;
 }
@@ -168,5 +176,6 @@ section h1, .card h2 {
 /* Responsive pequeño */
 @media (max-width: 767px) {
   th, td { padding: 10px 10px; }
-  .actions, td .row { gap: 8px; }
+  .actions { gap: 8px; }
+  td .row { gap: 12px; }
 }
