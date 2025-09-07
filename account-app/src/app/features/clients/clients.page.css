@@ -179,3 +179,9 @@ section h1, .card h2 {
   .actions { gap: 8px; }
   td .row { gap: 12px; }
 }
+
+.grid {
+  display: grid;
+  grid-template-columns: 380px 1fr; /* form a la izquierda, tabla a la derecha */
+  gap: 16px;
+}
