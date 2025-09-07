@@ -1,12 +1,13 @@
-/* ===== Paleta Banco Pichincha (con fallbacks) ===== */
+/* ===== Paleta Banco Pichincha (valores fijos para evitar referencias cíclicas) ===== */
 :host {
-  --bp-yellow: var(--bp-yellow, #FFDD00);
-  --bp-navy:   var(--bp-navy,   #0F265C);
-  --bp-line:   var(--bp-line,   #E5E7EB);
-  --bp-text:   var(--bp-text,   #111827);
-  --bp-muted:  var(--bp-muted,  #6B7280);
-  --ok:        var(--ok,  #10b981);
-  --err:       var(--err, #ef4444);
+  /* Define valores explícitos para que los bordes no queden inválidos */
+  --bp-yellow: #FFDD00;
+  --bp-navy:   #0F265C;
+  --bp-line:   #E5E7EB;
+  --bp-text:   #111827;
+  --bp-muted:  #6B7280;
+  --ok:        #10b981;
+  --err:       #ef4444;
   --card-bg:   #FFFFFF;
   --row-hover: #F8FAFC;
 }
