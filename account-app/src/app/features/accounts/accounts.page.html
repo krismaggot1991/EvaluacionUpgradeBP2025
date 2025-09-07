@@ -23,10 +23,9 @@
 
       <label>
         Tipo
-        <select formControlName="type">
-          <option value="Ahorro">Ahorro</option>
-          <option value="Corriente">Corriente</option>
-          <option value="Ahorros">Ahorros</option>
+        <select formControlName="accountType">
+          <option value="AHORROS">AHORROS</option>
+          <option value="CORRIENTE">CORRIENTE</option>
         </select>
       </label>
 
@@ -79,7 +78,7 @@
         <tbody>
           <tr *ngFor="let a of filtered()">
             <td>{{ a.number }}</td>
-            <td>{{ a.type }}</td>
+            <td>{{ a.accountType }}</td>
             <td>{{ a.initialBalance | number : '1.2-2' }}</td>
             <td>{{ a.clientIdentification }}</td>
             <td>

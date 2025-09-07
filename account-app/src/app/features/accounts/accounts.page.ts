@@ -27,7 +27,7 @@ export class AccountsPage {
     form = this.fb.group({
         id: [undefined as number | undefined],
         number: ['', [Validators.required, Validators.minLength(4)]],
-        type: ['Ahorro' as 'Ahorro' | 'Corriente' | 'Ahorros', Validators.required],
+        accountType: ['', Validators.required], // <-- default
         initialBalance: [0, [Validators.required, Validators.min(0)]],
         status: [true, Validators.required],
         clientIdentification: ['', Validators.required],
@@ -40,7 +40,7 @@ export class AccountsPage {
         return this.items().filter(a =>
             [
                 a.number,
-                a.type,
+                a.accountType,
                 String(a.initialBalance),
                 a.clientIdentification
             ]
@@ -70,7 +70,7 @@ export class AccountsPage {
 
     clear() {
         this.form.reset({
-            type: 'Ahorro',
+            accountType: 'AHORROS',
             initialBalance: 0,
             status: true
         });

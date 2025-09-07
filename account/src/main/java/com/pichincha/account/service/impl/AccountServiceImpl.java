@@ -37,6 +37,11 @@ public class AccountServiceImpl implements AccountService {
         .orElseThrow(() -> new AccountNotFoundException(String.format(CLIENT_NOT_FOUND_MESSAGE, clientIdentification)));
   }
 
+  private ClientDto findClientById(Long id) {
+    return Objects.requireNonNull(clientFeignClient.findClientById(id).getBody())
+        .orElseThrow(() -> new AccountNotFoundException(String.format(CLIENT_NOT_FOUND_MESSAGE, id)));
+  }
+
   @Override
   public void saveAccount(AccountDto accountDto) {
     log.info("Add account for client with identification: {}", accountDto.getClientIdentification());
@@ -81,7 +86,12 @@ public class AccountServiceImpl implements AccountService {
   @Override
   public Optional<AccountDto> findAccountById(Long id) {
     log.info("Find account with id: {}", id);
-    return accountRepository.findById(id).map(accountMapper::toDto);
+    Optional<AccountDto> accountDto = accountRepository.findById(id).map(accountMapper::toDto);
+    if (accountDto.isPresent()) {
+      ClientDto clientDto = findClientById(accountDto.get().getClientId());
+      accountDto.get().setClientIdentification(clientDto.getIdentification());
+    }
+    return accountDto;
   }
 
   @Override
@@ -93,7 +103,12 @@ public class AccountServiceImpl implements AccountService {
   @Override
   public List<AccountDto> findAllAccounts() {
     log.info("Finding all accounts");
-    return accountRepository.findAll().stream().map(accountMapper::toDto).toList();
+    List<AccountDto> accountList = accountRepository.findAll().stream().map(accountMapper::toDto).toList();
+    accountList.forEach(accountDto -> {
+      ClientDto clientDto = findClientById(accountDto.getClientId());
+      accountDto.setClientIdentification(clientDto.getIdentification());
+    });
+    return accountList;
   }
 
   @Override

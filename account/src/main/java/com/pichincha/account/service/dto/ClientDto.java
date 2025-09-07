@@ -8,4 +8,5 @@ public class ClientDto implements Serializable {
 
   Long id;
   String name;
+  String identification;
 }

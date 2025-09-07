@@ -63,4 +63,9 @@ public class ClientController {
   public ResponseEntity<Optional<ClientDto>> findClientByIdentification(@PathVariable String identification) {
     return ResponseEntity.ok(clientService.findClientByIdentification(identification));
   }
+
+  @GetMapping("/getById/{id}")
+  public ResponseEntity<Optional<ClientDto>> findClientById(@PathVariable Long id) {
+    return ResponseEntity.ok(clientService.findClientById(id));
+  }
 }

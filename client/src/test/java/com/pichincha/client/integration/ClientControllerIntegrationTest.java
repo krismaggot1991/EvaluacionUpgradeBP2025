@@ -35,12 +35,12 @@ class ClientControllerIntegrationTest {
   void setup() {
     clientDto = new ClientDto();
     clientDto.setName("Christian Muyon");
-    clientDto.setGender(Gender.MALE);
+    clientDto.setGender(Gender.MASCULINO);
     clientDto.setAge(33);
     clientDto.setIdentification("1803750312");
     clientDto.setAddress("10 de agosto y Naciones Unidas");
     clientDto.setPhone("0999733321");
-    clientDto.setPassword(1234);
+    clientDto.setPassword("12345678");
     clientDto.setStatus(true);
   }
 

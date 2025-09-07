@@ -27,6 +27,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.http.ResponseEntity;
 
 class AccountServiceTest {
 
@@ -52,12 +53,13 @@ class AccountServiceTest {
 
     clientDto = new ClientDto();
     clientDto.setId(1L);
+    clientDto.setIdentification("1234567890");
     clientDto.setName("Test Client");
 
     accountDto = new AccountDto();
     accountDto.setId(1L);
     accountDto.setNumber("1234567890");
-    accountDto.setAccountType(AccountTypeEnum.SAVINGS);
+    accountDto.setAccountType(AccountTypeEnum.AHORROS);
     accountDto.setInitialBalance(BigDecimal.valueOf(1000));
     accountDto.setStatus(true);
     accountDto.setClientId(1L);
@@ -73,6 +75,8 @@ class AccountServiceTest {
   void shouldFindAccountById() {
     when(accountRepository.findById(anyLong())).thenReturn(Optional.of(account));
     when(accountMapper.toDto(any(Account.class))).thenReturn(accountDto);
+    when(clientFeignClient.findClientById(anyLong()))
+        .thenReturn(ResponseEntity.of(Optional.of(Optional.of(clientDto))));
 
     Optional<AccountDto> result = accountService.findAccountById(1L);
 
@@ -97,6 +101,8 @@ class AccountServiceTest {
   void shouldFindAllAccounts() {
     when(accountRepository.findAll()).thenReturn(List.of(account));
     when(accountMapper.toDto(any(Account.class))).thenReturn(accountDto);
+    when(clientFeignClient.findClientById(anyLong()))
+        .thenReturn(ResponseEntity.of(Optional.of(Optional.of(clientDto))));
 
     List<AccountDto> result = accountService.findAllAccounts();
 

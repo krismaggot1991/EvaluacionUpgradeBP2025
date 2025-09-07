@@ -13,4 +13,6 @@ public interface ClientFeignClient {
 
   @GetMapping("/api/client/{identification}")
   ResponseEntity<Optional<ClientDto>> findClientByIdentification(@PathVariable String identification);
+  @GetMapping("/api/client/getById/{id}")
+  ResponseEntity<Optional<ClientDto>> findClientById(@PathVariable Long id);
 }
