@@ -45,7 +45,7 @@ public class MovementServiceImpl implements MovementService {
       throw new AccountBadRequestException("Movement value must be up upper to 0");
     }
 
-    if (MovementTypeEnum.WITHDRAWAL.equals(movementType)) {
+    if (MovementTypeEnum.DEBITO.equals(movementType)) {
       if (movementValue.compareTo(BigDecimal.ZERO) > 0) {
         throw new AccountBadRequestException("Value must be negative for a withdrawal");
       }
@@ -53,7 +53,7 @@ public class MovementServiceImpl implements MovementService {
       if (initialBalance.compareTo(movementValue.abs()) < 0) {
         throw new AccountBadRequestException("Dont have the balance available to make this movement");
       }
-    } else if (MovementTypeEnum.DEPOSIT.equals(movementType) && movementValue.compareTo(BigDecimal.ZERO) < 0) {
+    } else if (MovementTypeEnum.CREDITO.equals(movementType) && movementValue.compareTo(BigDecimal.ZERO) < 0) {
       throw new AccountBadRequestException("The value must be positive for a deposit");
     }
   }

@@ -249,7 +249,7 @@ CREATE TABLE public.movements (
     account_id bigint NOT NULL,
     movement_id bigint NOT NULL,
     movement_type character varying(10) NOT NULL,
-    CONSTRAINT movements_movement_type_check CHECK (((movement_type)::text = ANY ((ARRAY['WITHDRAWAL'::character varying, 'DEPOSIT'::character varying])::text[])))
+    CONSTRAINT movements_movement_type_check CHECK (((movement_type)::text = ANY ((ARRAY['DEBITO'::character varying, 'CREDITO'::character varying])::text[])))
 );
 
 

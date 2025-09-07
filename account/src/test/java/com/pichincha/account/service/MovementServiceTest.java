@@ -67,7 +67,7 @@ class MovementServiceTest {
     movementDto = new MovementDto();
     movementDto.setId(1L);
     movementDto.setAccountNumber("1234567890");
-    movementDto.setMovementType(MovementTypeEnum.DEPOSIT);
+    movementDto.setMovementType(MovementTypeEnum.CREDITO);
     movementDto.setValue(BigDecimal.valueOf(500));
 
     movement = new Movement();
@@ -166,14 +166,14 @@ class MovementServiceTest {
 
   @Test
   void shouldValidateMovementWithNegativeValueForDeposit() {
-    movementDto.setMovementType(MovementTypeEnum.DEPOSIT);
+    movementDto.setMovementType(MovementTypeEnum.CREDITO);
     movementDto.setValue(BigDecimal.valueOf(-500));
     assertThrows(AccountNotFoundException.class, () -> movementService.saveMovement(movementDto));
   }
 
   @Test
   void shouldValidateMovementWithPositiveValueForWithdrawal() {
-    movementDto.setMovementType(MovementTypeEnum.WITHDRAWAL);
+    movementDto.setMovementType(MovementTypeEnum.DEBITO);
     movementDto.setValue(BigDecimal.valueOf(500));
     assertThrows(AccountNotFoundException.class, () -> movementService.saveMovement(movementDto));
   }
@@ -181,7 +181,7 @@ class MovementServiceTest {
   @Test
   void shouldValidateMovementWithInsufficientBalanceForWithdrawal() {
     accountDto.setInitialBalance(BigDecimal.valueOf(100));
-    movementDto.setMovementType(MovementTypeEnum.WITHDRAWAL);
+    movementDto.setMovementType(MovementTypeEnum.DEBITO);
     movementDto.setValue(BigDecimal.valueOf(-200));
     when(accountService.findAccountByNumber(anyString())).thenReturn(Optional.of(accountDto));
     assertThrows(AccountBadRequestException.class, () -> movementService.saveMovement(movementDto));

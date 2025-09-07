@@ -40,7 +40,7 @@ class MovementControllerTest {
     movementDto = new MovementDto();
     movementDto.setId(1L);
     movementDto.setAccountNumber("1234567890");
-    movementDto.setMovementType(MovementTypeEnum.DEPOSIT);
+    movementDto.setMovementType(MovementTypeEnum.CREDITO);
     movementDto.setValue(BigDecimal.valueOf(1000));
     movementDto.setBalance(BigDecimal.valueOf(1000));
     movementDto.setAccountId(1L);

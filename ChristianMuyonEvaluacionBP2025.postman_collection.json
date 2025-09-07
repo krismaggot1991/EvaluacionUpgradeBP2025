@@ -724,7 +724,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"date\": \"2025-09-06\",\r\n    \"movementType\": \"WITHDRAWAL\",\r\n    \"value\": -200,\r\n    \"accountNumber\": \"123456\"\r\n}",
+									"raw": "{\r\n    \"date\": \"2025-09-06\",\r\n    \"movementType\": \"DEBITO\",\r\n    \"value\": -200,\r\n    \"accountNumber\": \"123456\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -750,7 +750,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"date\": \"2025-09-06\",\r\n    \"movementType\": \"WITHDRAWAL\",\r\n    \"value\": -300,\r\n    \"accountNumber\": \"123456\"\r\n}",
+											"raw": "{\r\n    \"date\": \"2025-09-06\",\r\n    \"movementType\": \"DEBITO\",\r\n    \"value\": -300,\r\n    \"accountNumber\": \"123456\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -793,7 +793,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"date\": \"2025-01-13\",\r\n    \"movementType\": \"DEPOSIT\",\r\n    \"value\": 4000,\r\n    \"accountNumber\": \"123456\"\r\n}",
+									"raw": "{\r\n    \"date\": \"2025-01-13\",\r\n    \"movementType\": \"CREDITO\",\r\n    \"value\": 4000,\r\n    \"accountNumber\": \"123456\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -820,7 +820,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"date\": \"2025-09-06\",\r\n    \"movementType\": \"DEPOSIT\",\r\n    \"value\": 100,\r\n    \"accountNumber\": \"123456\"\r\n}",
+											"raw": "{\r\n    \"date\": \"2025-09-06\",\r\n    \"movementType\": \"CREDITO\",\r\n    \"value\": 100,\r\n    \"accountNumber\": \"123456\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -908,7 +908,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "[\n    {\n        \"id\": 1,\n        \"date\": \"2025-09-06\",\n        \"movementType\": \"DEPOSIT\",\n        \"value\": 100,\n        \"balance\": 3000,\n        \"accountId\": 2,\n        \"accountNumber\": \"123456\"\n    }\n]"
+									"body": "[\n    {\n        \"id\": 1,\n        \"date\": \"2025-09-06\",\n        \"movementType\": \"CREDITO\",\n        \"value\": 100,\n        \"balance\": 3000,\n        \"accountId\": 2,\n        \"accountNumber\": \"123456\"\n    }\n]"
 								}
 							]
 						},
@@ -972,7 +972,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "[\r\n    {\r\n        \"date\": \"2025-09-06\",\r\n        \"movementType\": \"WITHDRAWAL\",\r\n        \"value\": -300,\r\n        \"accountNumber\": \"123456\"\r\n    },\r\n    {\r\n        \"date\": \"2025-09-06\",\r\n        \"movementType\": \"DEPOSIT\",\r\n        \"value\": 600,\r\n        \"accountNumber\": \"123456\"\r\n    },\r\n    {\r\n        \"date\": \"2025-09-06\",\r\n        \"movementType\": \"DEPOSIT\",\r\n        \"value\": 100,\r\n        \"accountNumber\": \"123456\"\r\n    },\r\n    {\r\n        \"date\": \"2025-09-06\",\r\n        \"movementType\": \"WITHDRAWAL\",\r\n        \"value\": -500,\r\n        \"accountNumber\": \"123456\"\r\n    }\r\n]",
+									"raw": "[\r\n    {\r\n        \"date\": \"2025-09-06\",\r\n        \"movementType\": \"DEBITO\",\r\n        \"value\": -300,\r\n        \"accountNumber\": \"123456\"\r\n    },\r\n    {\r\n        \"date\": \"2025-09-06\",\r\n        \"movementType\": \"CREDITO\",\r\n        \"value\": 600,\r\n        \"accountNumber\": \"123456\"\r\n    },\r\n    {\r\n        \"date\": \"2025-09-06\",\r\n        \"movementType\": \"CREDITO\",\r\n        \"value\": 100,\r\n        \"accountNumber\": \"123456\"\r\n    },\r\n    {\r\n        \"date\": \"2025-09-06\",\r\n        \"movementType\": \"DEBITO\",\r\n        \"value\": -500,\r\n        \"accountNumber\": \"123456\"\r\n    }\r\n]",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -999,7 +999,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "[\r\n    {\r\n        \"date\": \"2025-09-06\",\r\n        \"movementType\": \"WITHDRAWAL\",\r\n        \"value\": -300,\r\n        \"accountNumber\": \"123456\"\r\n    },\r\n    {\r\n        \"date\": \"2025-09-06\",\r\n        \"movementType\": \"DEPOSIT\",\r\n        \"value\": 600,\r\n        \"accountNumber\": \"123456\"\r\n    },\r\n    {\r\n        \"date\": \"2025-09-06\",\r\n        \"movementType\": \"DEPOSIT\",\r\n        \"value\": 100,\r\n        \"accountNumber\": \"123456\"\r\n    },\r\n    {\r\n        \"date\": \"2025-09-06\",\r\n        \"movementType\": \"WITHDRAWAL\",\r\n        \"value\": -500,\r\n        \"accountNumber\": \"123456\"\r\n    }\r\n]",
+											"raw": "[\r\n    {\r\n        \"date\": \"2025-09-06\",\r\n        \"movementType\": \"DEBITO\",\r\n        \"value\": -300,\r\n        \"accountNumber\": \"123456\"\r\n    },\r\n    {\r\n        \"date\": \"2025-09-06\",\r\n        \"movementType\": \"CREDITO\",\r\n        \"value\": 600,\r\n        \"accountNumber\": \"123456\"\r\n    },\r\n    {\r\n        \"date\": \"2025-09-06\",\r\n        \"movementType\": \"CREDITO\",\r\n        \"value\": 100,\r\n        \"accountNumber\": \"123456\"\r\n    },\r\n    {\r\n        \"date\": \"2025-09-06\",\r\n        \"movementType\": \"DEBITO\",\r\n        \"value\": -500,\r\n        \"accountNumber\": \"123456\"\r\n    }\r\n]",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -1139,7 +1139,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n    \"name\": \"Christian Muyon\",\n    \"accounts\": [\n        {\n            \"id\": 2,\n            \"number\": \"123456\",\n            \"accountType\": \"CHECKING\",\n            \"initialBalance\": 3900,\n            \"status\": true,\n            \"clientId\": 4,\n            \"clientIdentification\": null,\n            \"movements\": [\n                {\n                    \"id\": 2,\n                    \"date\": \"2025-09-06\",\n                    \"movementType\": \"WITHDRAWAL\",\n                    \"value\": -300,\n                    \"balance\": 4000,\n                    \"accountId\": null,\n                    \"accountNumber\": null\n                },\n                {\n                    \"id\": 3,\n                    \"date\": \"2025-09-06\",\n                    \"movementType\": \"DEPOSIT\",\n                    \"value\": 600,\n                    \"balance\": 3700,\n                    \"accountId\": null,\n                    \"accountNumber\": null\n                },\n                {\n                    \"id\": 4,\n                    \"date\": \"2025-09-06\",\n                    \"movementType\": \"DEPOSIT\",\n                    \"value\": 100,\n                    \"balance\": 4300,\n                    \"accountId\": null,\n                    \"accountNumber\": null\n                },\n                {\n                    \"id\": 5,\n                    \"date\": \"2025-09-06\",\n                    \"movementType\": \"WITHDRAWAL\",\n                    \"value\": -500,\n                    \"balance\": 4400,\n                    \"accountId\": null,\n                    \"accountNumber\": null\n                }\n            ]\n        }\n    ]\n}"
+									"body": "{\n    \"name\": \"Christian Muyon\",\n    \"accounts\": [\n        {\n            \"id\": 2,\n            \"number\": \"123456\",\n            \"accountType\": \"CHECKING\",\n            \"initialBalance\": 3900,\n            \"status\": true,\n            \"clientId\": 4,\n            \"clientIdentification\": null,\n            \"movements\": [\n                {\n                    \"id\": 2,\n                    \"date\": \"2025-09-06\",\n                    \"movementType\": \"DEBITO\",\n                    \"value\": -300,\n                    \"balance\": 4000,\n                    \"accountId\": null,\n                    \"accountNumber\": null\n                },\n                {\n                    \"id\": 3,\n                    \"date\": \"2025-09-06\",\n                    \"movementType\": \"CREDITO\",\n                    \"value\": 600,\n                    \"balance\": 3700,\n                    \"accountId\": null,\n                    \"accountNumber\": null\n                },\n                {\n                    \"id\": 4,\n                    \"date\": \"2025-09-06\",\n                    \"movementType\": \"CREDITO\",\n                    \"value\": 100,\n                    \"balance\": 4300,\n                    \"accountId\": null,\n                    \"accountNumber\": null\n                },\n                {\n                    \"id\": 5,\n                    \"date\": \"2025-09-06\",\n                    \"movementType\": \"DEBITO\",\n                    \"value\": -500,\n                    \"balance\": 4400,\n                    \"accountId\": null,\n                    \"accountNumber\": null\n                }\n            ]\n        }\n    ]\n}"
 								}
 							]
 						}

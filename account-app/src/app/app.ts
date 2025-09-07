@@ -10,7 +10,7 @@ import { ToastComponent } from './shared/toast/toast.component';
     <header class="topbar navigation-header" role="banner">
       <div class="brand" aria-label="Aplicación bancaria">
         <span class="brand__mark" aria-hidden="true"></span>
-        <h1 class="brand__title">Bank App</h1>
+        <img src="assets/images/logoBP.png" alt="Banco Pichincha" class="brand__logo" />
       </div>
 
       <nav class="nav" role="navigation" aria-label="Navegación principal">
@@ -77,6 +77,10 @@ import { ToastComponent } from './shared/toast/toast.component';
     position:absolute; left:10px; right:10px; bottom: -6px;
     height: 3px; border-radius: 3px;
     background: var(--bp-yellow);
+  }
+  .brand__logo {
+    height: 28px;         /* o el tamaño que quieras */
+    object-fit: contain;
   }
   `]
 })
