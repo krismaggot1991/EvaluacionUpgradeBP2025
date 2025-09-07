@@ -1,18 +1,33 @@
+/* ===== Paleta Banco Pichincha (con fallbacks) ===== */
+:host {
+  --bp-yellow: var(--bp-yellow, #FFDD00);
+  --bp-navy:   var(--bp-navy,   #0F265C);
+  --bp-line:   var(--bp-line,   #E5E7EB);
+  --bp-text:   var(--bp-text,   #111827);
+  --bp-muted:  var(--bp-muted,  #6B7280);
+  --ok:        var(--ok,  #10b981);
+  --err:       var(--err, #ef4444);
+  --card-bg:   #FFFFFF;
+  --row-hover: #F8FAFC;
+}
+
 /* Panel principal */
 section {
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  color: #e5e7eb;
+  color: var(--bp-text);
+  background: #fff; /* coherente con styles.scss */
 }
 
 /* Card contenedor */
 .card {
-  background: #111827;
+  background: var(--card-bg);
   padding: 16px;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--bp-line);
+  box-shadow: 0 1px 2px rgba(0,0,0,.04);
 }
 
 /* Formularios */
@@ -25,93 +40,114 @@ label {
   display: flex;
   flex-direction: column;
   font-size: 14px;
+  color: var(--bp-text);
 }
 
 input, select {
   margin-top: 4px;
-  padding: 8px 10px;
-  border: 1px solid #374151;
-  border-radius: 8px;
-  background: #0b1220;
-  color: #f9fafb;
+  padding: 10px 12px;
+  border: 1px solid var(--bp-line);
+  border-radius: 10px;
+  background: #FFFFFF;
+  color: var(--bp-text);
+  transition: box-shadow .15s ease, border-color .15s ease;
 }
+
+input::placeholder { color: var(--bp-muted); }
 
 input:focus, select:focus {
   outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.4);
+  border-color: var(--bp-yellow);
+  box-shadow: 0 0 0 3px rgba(255, 221, 0, .35);
 }
 
-/* Botones */
+/* Botones (primario amarillo + secundario borde) */
 button {
-  padding: 8px 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
   border: none;
-  border-radius: 8px;
-  background: #1f2937;
-  color: #f9fafb;
+  background: var(--bp-yellow);
+  color: var(--bp-navy);
+  font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s ease-in-out;
+  transition: filter .15s ease, transform .02s ease;
 }
 
-button:hover {
-  background: #374151;
-}
+button:hover { filter: brightness(0.97); }
+button:active { transform: translateY(1px); }
 
 button:disabled {
-  opacity: 0.5;
+  opacity: 0.6;
   cursor: not-allowed;
 }
+
+/* Variante secundaria (si la usas en acciones) */
+.actions .btn-outline {
+  background: transparent;
+  border: 2px solid var(--bp-yellow);
+  color: var(--bp-navy);
+}
+.actions .btn-outline:hover { background: rgba(255,221,0,.08); }
 
 /* Tabla */
 table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 12px;
+  background: #fff;
+  border: 1px solid var(--bp-line);
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 thead {
-  background: #1f2937;
+  background: var(--bp-yellow);
+  color: var(--bp-navy);
 }
 
 th, td {
   text-align: left;
-  padding: 10px;
-  border-bottom: 1px solid #374151;
+  padding: 12px 12px;
+  border-bottom: 1px solid var(--bp-line);
+  font-size: 14px;
 }
 
 tbody tr:hover {
-  background: #1e293b;
+  background: var(--row-hover);
 }
 
-/* Badges */
+/* Badges (estado) */
 .badge-ok {
   display: inline-block;
-  padding: 2px 8px;
-  border-radius: 10px;
-  background: #10b981;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--ok);
   color: white;
   font-size: 12px;
+  font-weight: 600;
 }
 
 .badge-no {
   display: inline-block;
-  padding: 2px 8px;
-  border-radius: 10px;
-  background: #ef4444;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--err);
   color: white;
   font-size: 12px;
+  font-weight: 600;
 }
 
 /* Acciones */
 .actions, td .row {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   margin-top: 8px;
+  align-items: center;
 }
 
 /* Errores */
 .error {
-  color: #f87171;
+  color: var(--err);
   font-size: 13px;
 }
 
@@ -119,5 +155,17 @@ tbody tr:hover {
 .loader {
   text-align: center;
   margin-top: 12px;
-  color: #9ca3af;
+  color: var(--bp-muted);
+}
+
+/* Encabezado de sección coherente con marca */
+section h1, .card h2 {
+  color: var(--bp-navy);
+  margin: 0 0 8px 0;
+}
+
+/* Responsive pequeño */
+@media (max-width: 767px) {
+  th, td { padding: 10px 10px; }
+  .actions, td .row { gap: 8px; }
 }
