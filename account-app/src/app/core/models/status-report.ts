@@ -2,7 +2,7 @@ export interface StatusReport {
     client: string;
     accounts: Array<{
         number: string;
-        type: string;
+        accountType: string;
         initialBalance: number;
         status: boolean;
         totalCredits: number;

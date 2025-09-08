@@ -30,7 +30,7 @@
     <h2>Cliente: {{ data()?.client }}</h2>
 
     <div *ngFor="let acc of data()?.accounts" class="report-block">
-      <h3>Cuenta: {{ acc.number }} ({{ acc.type }})</h3>
+      <h3>Cuenta: {{ acc.number }} ({{ acc.accountType }})</h3>
       <p>Saldo inicial: {{ acc.initialBalance | currency : 'USD' }}</p>
       <p>Estado: {{ acc.status ? 'Activa' : 'Inactiva' }}</p>
       <p>Total créditos: {{ acc.totalCredits | currency : 'USD' }}</p>

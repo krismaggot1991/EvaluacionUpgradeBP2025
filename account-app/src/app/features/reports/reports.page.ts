@@ -62,7 +62,7 @@ export class ReportsPage {
         let y = 25;
         report.accounts.forEach(acc => {
             doc.setFontSize(12);
-            doc.text(`Cuenta ${acc.number} (${acc.type})`, 10, y);
+            doc.text(`Cuenta ${acc.number} (${acc.accountType})`, 10, y);
             y += 6;
             doc.text(`Saldo inicial: ${acc.initialBalance}`, 10, y);
             y += 6;
