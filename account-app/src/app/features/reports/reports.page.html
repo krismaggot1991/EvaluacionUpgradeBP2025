@@ -31,11 +31,11 @@
 
     <div *ngFor="let acc of data()?.accounts" class="report-block">
       <h3>Cuenta: {{ acc.number }} ({{ acc.accountType }})</h3>
-      <p>Saldo inicial: {{ acc.initialBalance | currency : 'USD' }}</p>
+      <!--  <p>Saldo inicial: {{ acc.initialBalance | currency : 'USD' }}</p>-->
       <p>Estado: {{ acc.status ? 'Activa' : 'Inactiva' }}</p>
-      <p>Total créditos: {{ acc.totalCredits | currency : 'USD' }}</p>
-      <p>Total débitos: {{ acc.totalDebits | currency : 'USD' }}</p>
-      <p>Saldo disponible: {{ acc.availableBalance | currency : 'USD' }}</p>
+      <!--    <p>Total créditos: {{ acc.totalCredits | currency : 'USD' }}</p>-->
+      <!--    <p>Total débitos: {{ acc.totalDebits | currency : 'USD' }}</p>-->
+      <p>Saldo disponible: {{ acc.initialBalance | currency : 'USD' }}</p>
 
       <table class="table">
         <thead>
