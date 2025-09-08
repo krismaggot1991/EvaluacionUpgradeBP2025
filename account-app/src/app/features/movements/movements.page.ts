@@ -28,7 +28,7 @@ export class MovementsPage {
     form = this.fb.group({
         id: [undefined as number | undefined],
         // Fecha es opcional; el backend puede setearla
-        date: [''],
+        date: ['', [Validators.required]],
         movementType: ['CREDITO' as MovementType, Validators.required],
         value: [0, [Validators.required, Validators.min(0.01)]],
         balance: [{ value: undefined as number | undefined, disabled: true }],
@@ -67,11 +67,25 @@ export class MovementsPage {
         });
     }
 
+    private toInputDateTime(src: string): string {
+      // Acepta ISO con o sin 'Z'
+      const d = new Date(src);
+      if (isNaN(d.getTime())) return ''; // fallback
+
+      const yyyy = d.getUTCFullYear();
+      const mm = String(d.getUTCMonth() + 1).padStart(2, '0');
+      const dd = String(d.getUTCDate()).padStart(2, '0');
+      const hh = String(d.getUTCHours()).padStart(2, '0');
+      const mi = String(d.getUTCMinutes()).padStart(2, '0');
+
+      return `${yyyy}-${mm}-${dd}T${hh}:${mi}`;
+    }
+
     edit(row: Movement) {
         // balance se muestra solo lectura
         this.form.reset({
             id: row.id,
-            date: row.date ?? '',
+            date: row.date ? this.toInputDateTime(row.date) : '',
             movementType: row.movementType,
             value: Math.abs(row.value ?? 0),
             balance: row.balance,
@@ -83,6 +97,7 @@ export class MovementsPage {
 
     clear() {
         this.form.reset({
+            date: '',
             movementType: 'CREDITO',
             value: 0,
             balance: undefined,

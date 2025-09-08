@@ -55,8 +55,11 @@
 
       <div class="row">
         <label>
-          Fecha (opcional)
-          <input type="datetime-local" formControlName="date" />
+          Fecha (obligatoria)
+          <input type="datetime-local" formControlName="date" required />
+          <span class="error" *ngIf="form.controls.date.invalid && form.controls.date.touched">
+            La fecha es obligatoria
+          </span>
         </label>
 
         <label>
