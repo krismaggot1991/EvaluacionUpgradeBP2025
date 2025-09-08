@@ -1,5 +1,5 @@
 export interface StatusReport {
-    client: string;
+    name: string;
     accounts: Array<{
         number: string;
         accountType: string;

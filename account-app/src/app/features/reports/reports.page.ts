@@ -57,7 +57,7 @@ export class ReportsPage {
         // Si no hay PDF desde el backend → generamos en front con jsPDF
         const doc = new jsPDF();
         doc.setFontSize(14);
-        doc.text(`Estado de cuenta - Cliente: ${report.client}`, 10, 15);
+        doc.text(`Estado de cuenta - Cliente: ${report.name}`, 10, 15);
 
         let y = 25;
         report.accounts.forEach(acc => {

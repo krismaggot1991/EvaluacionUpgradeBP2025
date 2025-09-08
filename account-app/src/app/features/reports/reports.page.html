@@ -27,7 +27,7 @@
 
   <!-- Resultado -->
   <div *ngIf="data()" class="card">
-    <h2>Cliente: {{ data()?.client }}</h2>
+    <h2>Cliente: {{ data()?.name }}</h2>
 
     <div *ngFor="let acc of data()?.accounts" class="report-block">
       <h3>Cuenta: {{ acc.number }} ({{ acc.accountType }})</h3>
