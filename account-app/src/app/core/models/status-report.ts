@@ -10,7 +10,7 @@ export interface StatusReport {
         availableBalance: number;
         movements: Array<{
             date: string;
-            movement: number;
+            value: number;
             balance: number;
         }>
     }>;

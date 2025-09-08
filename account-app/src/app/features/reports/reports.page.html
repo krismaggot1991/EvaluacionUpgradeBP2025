@@ -48,7 +48,7 @@
         <tbody>
           <tr *ngFor="let m of acc.movements">
             <td>{{ m.date }}</td>
-            <td>{{ m.movement | number : '1.2-2' }}</td>
+            <td>{{ m.value | number : '1.2-2' }}</td>
             <td>{{ m.balance | number : '1.2-2' }}</td>
           </tr>
         </tbody>

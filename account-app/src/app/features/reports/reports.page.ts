@@ -75,7 +75,7 @@ export class ReportsPage {
             doc.text('Movimientos:', 10, y);
             y += 6;
             acc.movements.forEach(m => {
-                doc.text(`${m.date}  mov: ${m.movement}  saldo: ${m.balance}`, 12, y);
+                doc.text(`${m.date}  mov: ${m.value}  saldo: ${m.balance}`, 12, y);
                 y += 5;
                 if (y > 270) { doc.addPage(); y = 20; }
             });
