@@ -29,11 +29,11 @@ export class MovementsPage {
         id: [undefined as number | undefined],
         // Fecha es opcional; el backend puede setearla
         date: [''],
-        movementType: ['CREDIT' as MovementType, Validators.required],
+        movementType: ['CREDITO' as MovementType, Validators.required],
         value: [0, [Validators.required, Validators.min(0.01)]],
         balance: [{ value: undefined as number | undefined, disabled: true }],
-        accountId: [undefined as number | undefined, [Validators.required, Validators.min(1)]],
-        accountNumber: [''] // opcional / solo display si lo devuelve el back
+        accountNumber: [undefined as String | undefined, [Validators.required, Validators.min(1)]],
+        accountId: [{ value: undefined as number | undefined, disabled: true }] // opcional / solo display si lo devuelve el back
     });
 
     // Lista filtrada por búsqueda rápida
@@ -83,7 +83,7 @@ export class MovementsPage {
 
     clear() {
         this.form.reset({
-            movementType: 'CREDIT',
+            movementType: 'CREDITO',
             value: 0,
             balance: undefined,
             accountId: undefined,
@@ -103,14 +103,14 @@ export class MovementsPage {
         const normalized: Movement = {
             ...raw,
             value:
-                raw.movementType === 'DEBIT'
+                raw.movementType === 'DEBITO'
                     ? -Math.abs(raw.value ?? 0)
                     : Math.abs(raw.value ?? 0)
         };
 
         // No enviamos balance ni accountNumber en create/update (los maneja back)
         delete (normalized as any).balance;
-        delete (normalized as any).accountNumber;
+        //delete (normalized as any).accountNumber;
 
         const req$ = normalized.id
             ? this.api.update(normalized.id!, normalized)

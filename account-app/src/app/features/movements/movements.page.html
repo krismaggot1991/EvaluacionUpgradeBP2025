@@ -17,8 +17,8 @@
         <label>
           Tipo de movimiento
           <select formControlName="movementType">
-            <option value="CREDIT">CREDITO (+)</option>
-            <option value="DEBIT">DEBITO (-)</option>
+            <option value="CREDITO">CREDITO (+)</option>
+            <option value="DEBITO">DEBITO (-)</option>
           </select>
         </label>
 
@@ -33,20 +33,20 @@
 
       <div class="row">
         <label>
-          ID de cuenta
-          <input type="number" formControlName="accountId" min="1" />
+          Numero de cuenta
+          <input type="number" formControlName="accountNumber" min="1" />
           <span
             class="hint"
-            *ngIf="form.controls.accountId.invalid && form.controls.accountId.touched"
+            *ngIf="form.controls.accountNumber.invalid && form.controls.accountNumber.touched"
           >
-            Requerido (ID numérico existente)
+            Requerido (Numero de cuenta existente)
           </span>
         </label>
 
         <label>
-          Número de cuenta (solo lectura si viene del backend)
+          ID de cuenta (solo lectura)
           <input
-            formControlName="accountNumber"
+            formControlName="accountId"
             placeholder="Se completa al cargar/editar"
             [readonly]="true"
           />
@@ -91,10 +91,10 @@
             <td>{{ m.accountNumber || m.accountId }}</td>
             <td>
               <span
-                [class.badge-credit]="m.movementType === 'CREDIT'"
-                [class.badge-debit]="m.movementType === 'DEBIT'"
+                [class.badge-credit]="m.movementType === 'CREDITO'"
+                [class.badge-debit]="m.movementType === 'DEBITO'"
               >
-                {{ m.movementType === 'CREDIT' ? 'Crédito' : 'Débito' }}
+                {{ m.movementType === 'CREDITO' ? 'Crédito' : 'Débito' }}
               </span>
             </td>
             <td [class.positive]="(m.value ?? 0) > 0" [class.negative]="(m.value ?? 0) < 0">
