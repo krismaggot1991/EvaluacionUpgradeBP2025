@@ -63,12 +63,12 @@ export class ReportsPage {
         report.accounts.forEach(acc => {
             doc.setFontSize(12);
             doc.text(`Cuenta ${acc.number} (${acc.accountType})`, 10, y);
+            // y += 6;
+            //doc.text(`Saldo inicial: ${acc.initialBalance}`, 10, y);
+            //y += 6;
+            // doc.text(`Créditos: ${acc.totalCredits}  Débitos: ${acc.totalDebits}`, 10, y);
             y += 6;
-            doc.text(`Saldo inicial: ${acc.initialBalance}`, 10, y);
-            y += 6;
-            doc.text(`Créditos: ${acc.totalCredits}  Débitos: ${acc.totalDebits}`, 10, y);
-            y += 6;
-            doc.text(`Saldo disponible: ${acc.availableBalance}`, 10, y);
+            doc.text(`Saldo disponible: ${acc.initialBalance}`, 10, y);
             y += 8;
 
             doc.setFontSize(10);
