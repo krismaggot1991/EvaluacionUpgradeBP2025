@@ -121,7 +121,18 @@ services:
       interval: 30s
       timeout: 10s
       retries: 5
-
+  frontend:
+    build:
+      context: ./account-app
+      dockerfile: Dockerfile
+    container_name: account-frontend
+    depends_on:
+      gateway:
+        condition: service_started
+    ports:
+      - "8080:80"
+    networks:
+      - spring
 networks:
   spring:
     driver: bridge
