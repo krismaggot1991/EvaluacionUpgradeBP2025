@@ -190,6 +190,12 @@ Puedes ver el diagrama de componentes de la arquitectura en IcePanel <a href="ht
 En la ruta principal del proyecto, existe un archivo llamado `ChristianMuyonEvaluacionBP2025.postman_collection.json` que contiene una colección de
 pruebas para todos los métodos de los servicios. Puedes importar este archivo a Postman para probar los endpoints de manera fácil.
 
+## Aplicación Front-End
+
+De manera local el acceso es mediante el puerto 4200. y en el contenedor se expone en http://localhost:8080.
+
+![interfaz](interfaz.png)
+
 ## Documentación del API
 
 La documentación completa de los endpoints de la API está disponible en el archivo `swagger.yml` ubicado en la ruta principal del proyecto. Este
