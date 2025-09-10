@@ -72,12 +72,12 @@ El Gateway actúa como una puerta de entrada para los clientes y enruta las soli
   ```bash
   ./gradlew bootRun
   ```
-- El servicio estará disponible en `http://localhost:8080`.
+- El servicio estará disponible en `http://localhost:8222`.
 
 ### Verificación
 
 - Puede acceder al Discovery Server en `http://localhost:8761` para ver todos los servicios registrados.
-- Puede utilizar herramientas como `Postman` para probar las API de cada servicio a través del Gateway en `http://localhost:8080`.
+- Puede utilizar herramientas como `Postman` para probar las API de cada servicio a través del Gateway en `http://localhost:8222`.
 
 ### Instrucciones para levantar la aplicación utilizando Docker Compose
 
@@ -123,7 +123,8 @@ Este comando levantará todos los contenedores de los servicios definidos en el 
 - **Discovery Server**: `http://localhost:8761`
 - **Accounts Service**: `http://localhost:8081`
 - **Clients Service**: `http://localhost:8082`
-- **Gateway**: `http://localhost:8080`
+- **Gateway**: `http://localhost:8222`
+- **Front-End**: `http://localhost:8080`
 
 ### 5. Detener los contenedores de Docker
 
@@ -139,6 +140,44 @@ docker-compose down
 - Verifique los archivos de configuración en cada módulo para asegurarse de que las conexiones a la base de datos y otros servicios sean correctas.
 
 ¡Con esto, la aplicación debería estar funcionando correctamente tanto en modo local como en contenedores Docker!
+
+## Frontend Angular
+
+El proyecto incluye una aplicación web Angular que se sirve en Docker y se expone en http://localhost:8080 a través del contenedor del frontend.
+
+- Prerrequisitos (para ejecución local sin Docker):
+  - Node.js 20+ y npm.
+  - Angular CLI 20.x instalado globalmente:
+    ```bash
+    npm i -g @angular/cli@20
+    ```
+- Ejecutar localmente en modo desarrollo:
+  1. Ir al directorio del frontend (por ejemplo, account-app).
+  2. Instalar dependencias:
+     ```bash
+     npm ci
+     # o
+     npm install
+     ```
+  3. (Recomendado) Usar un proxy al gateway para evitar problemas de CORS durante el desarrollo. Crea un archivo proxy.conf.json con un mapeo hacia el gateway (por ejemplo, http://localhost:8222) y ejecuta:
+     ```bash
+     ng serve --proxy-config proxy.conf.json --port 4200 --open
+     ```
+     La aplicación quedará disponible en http://localhost:4200.
+- Build de producción:
+  ```bash
+  ng build --configuration production
+  ```
+  El artefacto generado (por defecto en dist/) puede servirse con un servidor web estático o mediante el contenedor ya provisto.
+- Ejecución con Docker Compose:
+  - El frontend se construye y publica automáticamente al ejecutar:
+    ```bash
+    docker-compose up
+    ```
+  - Acceso en Docker: http://localhost:8080 (mapeado al servidor web del contenedor).
+- Notas:
+  - Apunta las llamadas HTTP del frontend al API Gateway para enrutar hacia los microservicios.
+  - Si eliges consumir servicios directamente sin gateway durante desarrollo, asegúrate de gestionar CORS adecuadamente.
 
 ## Diagrama de componentes la solución
 
