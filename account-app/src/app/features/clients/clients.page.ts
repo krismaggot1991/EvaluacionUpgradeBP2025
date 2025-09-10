@@ -1,9 +1,10 @@
 import { Component, computed, effect, inject, signal } from '@angular/core';
 import { ClientsApi } from '../../core/services/clients.api';
 import { Client } from '../../core/models/client';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import {FormBuilder, FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { debounceTime } from 'rxjs/operators';
+import {debounceTime, distinctUntilChanged, map, shareReplay, startWith} from 'rxjs/operators';
+import {combineLatest, Observable} from 'rxjs';
 
 @Component({
     standalone: true,
@@ -15,6 +16,12 @@ import { debounceTime } from 'rxjs/operators';
 export class ClientsPage {
     private api = inject(ClientsApi);
     private fb = inject(FormBuilder);
+
+  /** Caja de búsqueda reactiva */
+    search = new FormControl<string>('', { nonNullable: true });
+
+  /** Fuente de datos (cacheada) */
+    clients$: Observable<Client[]> = this.api.list().pipe(shareReplay(1));
 
     items = signal<Client[]>([]);
     loading = signal(false);
@@ -99,4 +106,46 @@ export class ClientsPage {
     private msg(err: any) {
         return err?.error?.message || err?.message || 'Error inesperado';
     }
+  /** Lista filtrada según se escribe */
+  filtered$: Observable<Client[]> = combineLatest([
+    this.clients$,
+    this.search.valueChanges.pipe(startWith(''), debounceTime(150), distinctUntilChanged())
+  ]).pipe(
+    map(([clients, term]) => filterClients(clients, term))
+  );
+
+  /** trackBy para rendimiento en *ngFor */
+  trackById = (_: number, c: Client) => (c as any).id ?? (c as any).identificacion ?? _; // fallback
+}
+
+
+/** Normaliza cadenas: minúsculas y sin tildes */
+function normalize(s: unknown): string {
+  const str = (s ?? '').toString().toLowerCase();
+  // quita diacríticos
+  return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+
+
+/** Convierte un cliente a texto buscable (ajusta campos si lo necesitas) */
+function clientToSearchText(c: Client): string {
+  // Incluye los campos típicos del PDF: nombre, identificacion, direccion, telefono, genero, edad, estado
+  const anyC = c as any;
+  const parts = [
+    anyC.nombre,
+    anyC.identificacion,
+    anyC.direccion,
+    anyC.telefono,
+    anyC.genero,
+    anyC.edad,
+    anyC.estado
+  ];
+  return normalize(parts.filter(Boolean).join(' '));
+}
+
+/** Aplica el filtro al arreglo de clientes */
+function filterClients(clients: Client[], term: string): Client[] {
+  const q = normalize(term);
+  if (!q) return clients;
+  return clients.filter(c => clientToSearchText(c).includes(q));
 }
